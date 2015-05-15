@@ -1,10 +1,5 @@
----
-title: "Reproducible Research: Peer Assessment 1"
-output: 
-  html_document:
-    keep_md: true
----
-test
+# Reproducible Research: Peer Assessment 1
+
 
 ## Loading and preprocessing the data
 
