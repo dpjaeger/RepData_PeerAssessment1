@@ -4,21 +4,34 @@ output:
   html_document:
     keep_md: true
 ---
-test
+
+This is my submission for Peer Assignment 1.
+
+Ensure that you have the activity.csv file in the RepData_PeerAssessment1 directory,
+which should be in your working directory.
+
+Make sure you are using the .csv version, NOT the .zip version (i.e. unzip the file)
 
 ## Loading and preprocessing the data
-
-
+```{r}
+activity <- read.csv("activity.csv")
+```
 
 ## What is mean total number of steps taken per day?
-
-
+```{r}
+activity$day <- as.numeric(activity[ , 2], format='%d')
+mean_day <- aggregate(activity$steps, by=list(activity$day), FUN=mean, na.action = na.omit)
+hist(mean_day[ ,2])
+```
 
 ## What is the average daily activity pattern?
+```{r}
+activity_complete <- activity[complete.cases(activity), ]
+mean_interval <- aggregate(activity_complete$steps, by=list(activity_complete$interval), FUN=mean, na.action=na.omit)
+plot(mean_interval, type = 'l')
+```
 
-
-
-## Imputing missing values
+## Inputing missing values
 
 
 
