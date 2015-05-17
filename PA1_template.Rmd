@@ -51,9 +51,10 @@ plot(mean_interval, type = 'l', main = "steps by interval")
 mean_interval <- mean_interval[order(-mean_interval[ ,2]), ]
 mean_interval[1,]
 ```
+Note that the maximum step interval is above!!
 
 ## Inputing missing values
-For this one, we will use the average steps for a given interval (from above) to fill this in:
+For this one, we will use the average steps for a given interval (from above) to fill this in.  We will use a "for" loop to fill in the data.
 ```{r}
 interval_values <- unique(mean_interval[ ,1])
 
@@ -67,7 +68,7 @@ for (x in interval_values) {
 mean_day_fill <- aggregate(activity_fill$steps, by=list(activity_fill$day), FUN=sum)
 ```
 
-Once again, here's a histogram and mean/medians:
+Once again, here's a histogram and mean/medians, now with NAs filled in:
 ```{r}
 hist(mean_day_fill[ ,2], main = "Steps per day, NAs filled", xlab = "steps")
 

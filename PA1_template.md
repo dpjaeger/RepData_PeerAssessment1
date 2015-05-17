@@ -16,7 +16,7 @@ install.packages("lubridate", repos="http://cran.rstudio.com/")
 ```
 ## 
 ## The downloaded binary packages are in
-## 	/var/folders/mk/8jz407lx50j4fhdz6wnr4pbw0000gn/T//RtmpCIYv5b/downloaded_packages
+## 	/var/folders/mk/8jz407lx50j4fhdz6wnr4pbw0000gn/T//Rtmprupvsy/downloaded_packages
 ```
 
 ```r
@@ -87,9 +87,10 @@ mean_interval[1,]
 ##     Group.1        x
 ## 104     835 206.1698
 ```
+Note that the maximum step interval is above!!
 
 ## Inputing missing values
-For this one, we will use the average steps for a given interval (from above) to fill this in:
+For this one, we will use the average steps for a given interval (from above) to fill this in.  We will use a "for" loop to fill in the data.
 
 ```r
 interval_values <- unique(mean_interval[ ,1])
@@ -104,7 +105,7 @@ for (x in interval_values) {
 mean_day_fill <- aggregate(activity_fill$steps, by=list(activity_fill$day), FUN=sum)
 ```
 
-Once again, here's a histogram and mean/medians:
+Once again, here's a histogram and mean/medians, now with NAs filled in:
 
 ```r
 hist(mean_day_fill[ ,2], main = "Steps per day, NAs filled", xlab = "steps")
